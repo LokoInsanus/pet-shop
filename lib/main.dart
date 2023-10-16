@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop/view/textForm.dart';
+import 'package:pet_shop/views/textForm.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,21 +14,39 @@ class MyApp extends StatelessWidget {
       title: 'Pet Shop',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Pet Shop'),
+          title: const Text('Pet Shop'),
         ),
-        body: const Column(children: [
-          SizedBox(height: 20,),
+        body: Column(children: [
+          const SizedBox(height: 20,),
           textForm(name: 'Nome do Cliente'),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           textForm(name: 'Email do Cliente',),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           textForm(name: 'Rua do Cliente',),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           textForm(name: 'Bairro do Cliente',),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
           textForm(name: 'Número da casa do Cliente',),
-          SizedBox(height: 20,),
-          textForm(name: 'CPF do Cliente',),
+          const SizedBox(height: 20,),
+          textForm(name: 'CPF do Cliente', cpf: true),
+          const SizedBox(height: 20,),
+          SizedBox(
+            height: 50,
+            width: 500,
+            child: OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue,
+              ), 
+              child: const Text(
+                'Salvar',
+                  style: TextStyle(
+                    fontSize: 25
+                  ),
+              ),
+            ),
+          )
         ]),
       ),
     );
