@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
-class textForm extends StatelessWidget {
-  textForm({super.key, required this.name, this.max, this.cpf = false}) {
+
+// ignore: must_be_immutable
+class TextForm extends StatelessWidget {
+  TextForm({Key? key, required this.name, this.max, this.cpf = false}) : super(key: key) {
     if(cpf) {
       cpfMask = MaskedTextController(mask: '000.000.000-00');
       max = 14;
@@ -11,7 +13,7 @@ class textForm extends StatelessWidget {
   final String name;
   final bool cpf;
 
-  int? max;
+  late int? max;
   MaskedTextController? cpfMask;
 
   @override
