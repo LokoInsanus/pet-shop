@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_shop/views/components/buttonForm.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,23 +11,15 @@ class Home extends StatelessWidget {
         title: const Text('Pet Shop - Home'),
         centerTitle: true,
       ),
-      body: Column(children: [
+      body: const Column(children: [
         SizedBox(height: 20,),
-        Center(
-          child: SizedBox(
-            height: 50,
-            width: 500,
-            child: OutlinedButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/cliente');
-                },
-                style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue,
-                ), 
-                child: Text('Cadastrar Cliente')),
-          ),
-        ),
+        ButtonForm('Cadastrar Cliente', route: '/registroCliente',),
+        SizedBox(height: 20,),
+        ButtonForm('Cadastrar Pet', route: '/registroPet',),
+        SizedBox(height: 20,),
+        ButtonForm('Listar Clientes', route: '/listarClientes',),
+        SizedBox(height: 20,),
+        ButtonForm('Listar Pets', route: '/listarPets',),
       ]),
     );
   }

@@ -15,9 +15,11 @@ class MyApp extends StatelessWidget {
       title: 'Pet Shop',
       routes: {
         '/': (context) => const Home(),
-        '/cliente': (context) => const RegistroCliente(),
+        '/registroCliente': (context) => const RegistroCliente(),
+        '/registroPet': (context) => const RegistroCliente(),
+        '/listarClientes': (context) => const RegistroCliente(),
+        '/listarPets': (context) => const RegistroCliente(),
       },
-      
     );
   }
 }
