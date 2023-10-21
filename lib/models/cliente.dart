@@ -4,7 +4,7 @@ class Cliente {
   String email;
   String rua;
   String bairro;
-  int numeroCasa;
+  String numeroCasa;
   String numeroTelefone;
   String cpf;
 

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pet_shop/views/pages/home.dart';
+import 'package:pet_shop/views/pages/listarClientes.dart';
+import 'package:pet_shop/views/pages/listarPets.dart';
 import 'package:pet_shop/views/pages/registroCliente.dart';
+import 'package:pet_shop/views/pages/registroPet.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +18,10 @@ class MyApp extends StatelessWidget {
       title: 'Pet Shop',
       routes: {
         '/': (context) => const Home(),
-        '/registroCliente': (context) => const RegistroCliente(),
-        '/registroPet': (context) => const RegistroCliente(),
-        '/listarClientes': (context) => const RegistroCliente(),
-        '/listarPets': (context) => const RegistroCliente(),
+        '/registroCliente': (context) => RegistroCliente(),
+        '/registroPet': (context) => RegistroPet(),
+        '/listarClientes': (context) => ListarClientes(),
+        '/listarPets': (context) => ListarPets(),
       },
     );
   }
