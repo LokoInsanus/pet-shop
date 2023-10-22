@@ -19,7 +19,7 @@ class ButtonForm extends StatelessWidget {
                 Navigator.of(context).pushNamed(route!);
               }
               else if(function != null) {
-                function;
+                function!();
               }
             },
             style: OutlinedButton.styleFrom(

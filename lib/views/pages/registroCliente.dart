@@ -18,19 +18,20 @@ class RegistroCliente extends StatelessWidget {
   late TextForm textTelefone = TextForm('Número de Telefone', telefone: true);
   late TextForm textCPF = TextForm('CPF do Cliente', cpf: true);
 
-  late Cliente _registro;
   ClienteDao clienteDao = ClienteDaoMemory();
 
   void salvarDados() {
-    _registro.nome = textNome.textValue;
-    _registro.email = textEmail.textValue;
-    _registro.rua = textRua.textValue;
-    _registro.bairro = textBairro.textValue;
-    _registro.numeroCasa = textNumero.textValue;
-    _registro.numeroTelefone = textTelefone.textValue;
-    _registro.cpf = textCPF.textValue;
+    final Cliente registro = Cliente(id: 0, nome: '', email: '', rua: '', bairro: '', numeroCasa: '', numeroTelefone: '', cpf: '');
 
-    clienteDao.inserir(_registro);
+    registro.nome = textNome.textValue;
+    registro.email = textEmail.textValue;
+    registro.rua = textRua.textValue;
+    registro.bairro = textBairro.textValue;
+    registro.numeroCasa = textNumero.textValue;
+    registro.numeroTelefone = textTelefone.textValue;
+    registro.cpf = textCPF.textValue;
+
+    clienteDao.inserir(registro);
   }
 
   @override
@@ -41,38 +42,22 @@ class RegistroCliente extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(children: [
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20,),
         textNome,
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20,),
         textEmail,
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20,),
         textRua,
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20,),
         textBairro,
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20,),
         textNumero,
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20,),
         textTelefone,
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 20,),
         textCPF,
-        const SizedBox(
-          height: 20,
-        ),
-        ButtonForm('Salvar', function: salvarDados)
+        const SizedBox(height: 20,),
+        ButtonForm('Salvar', function: salvarDados),
       ]),
     );
   }
