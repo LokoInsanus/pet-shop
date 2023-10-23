@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_shop/dao/memory/clienteDaoMemory.dart';
 import 'package:pet_shop/models/cliente.dart';
 
-List<DataRow> CreateRows() {
+List<DataRow> CreateClienteRows() {
   List<DataRow> rows = [];
   List<Cliente> dados = ClienteDaoMemory().listarTodos();
 

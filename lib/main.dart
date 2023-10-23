@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const Home(),
         '/registroCliente': (context) => RegistroCliente(),
         '/registroPet': (context) => RegistroPet(),
-        '/listarClientes': (context) => ListarClientes(),
-        '/listarPets': (context) => ListarPets(),
+        '/listarClientes': (context) => const ListarClientes(),
+        '/listarPets': (context) => const ListarPets(),
       },
     );
   }
