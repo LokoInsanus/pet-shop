@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pet_shop/views/pages/home.dart';
+import 'package:pet_shop/views/pages/listarClientes.dart';
+import 'package:pet_shop/views/pages/listarPets.dart';
+import 'package:pet_shop/views/pages/registroCliente.dart';
+import 'package:pet_shop/views/pages/registroPet.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,25 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pet Shop',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Pet Shop'),
-        ),
-        floatingActionButton: FloatingActionButton.large(
-          onPressed: () {},
-          child: Text(
-            'Enviar',
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-        body: Column(children: [
-          Form(
-            child: TextFormField(
-              decoration: InputDecoration(hintText: 'Oi'),
-            ),
-          )
-        ]),
-      ),
+      routes: {
+        '/': (context) => const Home(),
+        '/registroCliente': (context) => RegistroCliente(),
+        '/registroPet': (context) => RegistroPet(),
+        '/listarClientes': (context) => const ListarClientes(),
+        '/listarPets': (context) => const ListarPets(),
+      },
     );
   }
 }
