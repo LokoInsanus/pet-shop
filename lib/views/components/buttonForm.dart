@@ -14,24 +14,25 @@ class ButtonForm extends StatelessWidget {
         height: 50,
         width: 500,
         child: OutlinedButton(
-            onPressed: () {
-              if(route != null) {
-                Navigator.of(context).pushNamed(route!);
-              }
-              else if(function != null) {
-                function!();
-              }
-            },
-            style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white,
-              backgroundColor: Colors.blue,
+          onPressed: () {
+            if(route != null) {
+              Navigator.of(context).pushNamed(route!);
+            }
+            else if(function != null) {
+              function!();
+            }
+          },
+          style: OutlinedButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.blue,
+          ),
+          child: Text(
+            name,
+            style: const TextStyle(
+              fontSize: 25,
             ),
-            child: Text(
-              name,
-              style: const TextStyle(
-                fontSize: 25,
-              ),
-            )),
+          )
+        ),
       ),
     );
   }
