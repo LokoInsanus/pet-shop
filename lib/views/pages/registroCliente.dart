@@ -6,31 +6,57 @@ import 'package:pet_shop/views/components/textForm.dart';
 import 'package:pet_shop/views/components/buttonForm.dart';
 
 // ignore: must_be_immutable
-class RegistroCliente extends StatelessWidget {
+class RegistroCliente extends StatefulWidget {
   RegistroCliente({Key? key}) : super(key: key);
 
-  late TextForm textNome = TextForm('Nome do Cliente');
-  late TextForm textEmail = TextForm('Email do Cliente');
-  late TextForm textRua = TextForm('Rua do Cliente');
-  late TextForm textBairro = TextForm('Bairro do Cliente');
-  late TextForm textNumero = TextForm('Número da Casa');
-  late TextForm textTelefone = TextForm('Número de Telefone', telefone: true);
-  late TextForm textCPF = TextForm('CPF do Cliente', cpf: true);
+  @override
+  State<RegistroCliente> createState() => _RegistroClienteState();
+}
+
+class _RegistroClienteState extends State<RegistroCliente> {
+  late bool invalidNome = false;
+  late bool invalidEmail = false;
+  late bool invalidRua = false;
+  late bool invalidBairro = false;
+  late bool invalidNumero = false;
+  late bool invalidTelefone = false;
+  late bool invalidCPF = false;
+
+  late String textNome = "";
+  late String textEmail = "";
+  late String textRua = "";
+  late String textBairro = "";
+  late String textNumero = "";
+  late String textTelefone = "";
+  late String textCPF = "";
 
   ClienteDao clienteDao = ClienteDaoMemory();
 
-  void salvarDados() {
+  void salvarDados(BuildContext context) {
     final Cliente registro = Cliente(id: 0, nome: '', email: '', rua: '', bairro: '', numeroCasa: '', numeroTelefone: '', cpf: '');
 
-    registro.nome = textNome.textValue;
-    registro.email = textEmail.textValue;
-    registro.rua = textRua.textValue;
-    registro.bairro = textBairro.textValue;
-    registro.numeroCasa = textNumero.textValue;
-    registro.numeroTelefone = textTelefone.textValue;
-    registro.cpf = textCPF.textValue;
+    registro.nome = textNome;
+    registro.email = textEmail;
+    registro.rua = textRua;
+    registro.bairro = textBairro;
+    registro.numeroCasa = textNumero;
+    registro.numeroTelefone = textTelefone;
+    registro.cpf = textCPF;
 
-    clienteDao.inserir(registro);
+    setState(() {
+      invalidNome = registro.nome.isEmpty;
+      invalidEmail = registro.email.isEmpty;
+      invalidRua = registro.rua.isEmpty;
+      invalidBairro = registro.bairro.isEmpty;
+      invalidNumero = registro.numeroCasa.isEmpty;
+      invalidTelefone = registro.numeroTelefone.length != 15;
+      invalidCPF = registro.cpf.length != 14;
+    });
+
+    if(!invalidNome && !invalidEmail && !invalidRua && !invalidBairro && !invalidNumero && !invalidTelefone && !invalidCPF) {
+      clienteDao.inserir(registro);
+      Navigator.of(context).pushNamed("/");
+    }
   }
 
   @override
@@ -42,21 +68,21 @@ class RegistroCliente extends StatelessWidget {
       ),
       body: Column(children: [
         const SizedBox(height: 20,),
-        textNome,
+        TextForm('Nome do Cliente', onChanged: (value) => textNome = value, invalid: invalidNome,),
         const SizedBox(height: 20,),
-        textEmail,
+        TextForm('Email do Cliente', onChanged: (value) => textEmail = value, invalid: invalidEmail,),
         const SizedBox(height: 20,),
-        textRua,
+        TextForm('Rua do Cliente', onChanged: (value) => textRua = value, invalid: invalidRua,),
         const SizedBox(height: 20,),
-        textBairro,
+        TextForm('Bairro do Cliente', onChanged: (value) => textBairro = value, invalid: invalidBairro,),
         const SizedBox(height: 20,),
-        textNumero,
+        TextForm('Número da Casa', onChanged: (value) => textNumero = value, invalid: invalidNumero,),
         const SizedBox(height: 20,),
-        textTelefone,
+        TextForm('Número de Telefone', telefone: true, onChanged: (value) => textTelefone = value, invalid: invalidTelefone,),
         const SizedBox(height: 20,),
-        textCPF,
+        TextForm('CPF do Cliente', cpf: true, onChanged: (value) => textCPF = value, invalid: invalidCPF,),
         const SizedBox(height: 20,),
-        ButtonForm('Salvar', function: salvarDados),
+        ButtonForm('Salvar', function: () => salvarDados(context)),
       ]),
     );
   }

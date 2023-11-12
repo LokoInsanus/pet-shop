@@ -24,11 +24,11 @@ class RegistroPet extends StatelessWidget {
   void salvarDados() {
     final Pet registro = Pet(id: 0, nome: '', idDono: 0, animal: '', raca: '', rga: '');
 
-    registro.nome = textNome.textValue;
-    registro.idDono = textDono.textValue;
-    registro.animal = textAnimal.textValue;
-    registro.raca = textRaca.textValue;
-    registro.rga = textRGA.textValue;
+    // registro.nome = textNome.textValue;
+    // registro.idDono = textDono.textValue;
+    // registro.animal = textAnimal.textValue;
+    // registro.raca = textRaca.textValue;
+    // registro.rga = textRGA.textValue;
 
     print(registro.idDono);
     petDao.inserir(registro);
@@ -53,7 +53,7 @@ class RegistroPet extends StatelessWidget {
         const SizedBox(height: 20,),
         textRGA,
         const SizedBox(height: 20,),
-        ButtonForm('Salvar', function: salvarDados),
+        ButtonForm('Salvar', function: salvarDados, route: '/',),
       ]),
     );
   }
