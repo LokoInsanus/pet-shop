@@ -9,14 +9,24 @@ import 'package:pet_shop/views/components/dropdownButtonForm.dart';
 import 'package:pet_shop/views/components/textForm.dart';
 
 // ignore: must_be_immutable
-class RegistroPet extends StatelessWidget {
+class RegistroPet extends StatefulWidget {
   RegistroPet({ Key? key }) : super(key: key);
 
-  late TextForm textNome = TextForm('Nome do Pet');
+  @override
+  State<RegistroPet> createState() => _RegistroPetState();
+}
+
+class _RegistroPetState extends State<RegistroPet> {
+  late bool invalidNome = false;
+  late bool invalidAnimal = false;
+  late bool invalidRaca = false;
+  late bool invalidRGA = false;
+
+  late String textNome = "";
   late DropdownButtonForm textDono = DropdownButtonForm(donos);
-  late TextForm textAnimal = TextForm('Animal');
-  late TextForm textRaca = TextForm('Raça');
-  late TextForm textRGA = TextForm('RGA', rga: true,);
+  late String textAnimal = "";
+  late String textRaca = "";
+  late String textRGA = "";
 
   PetDao petDao = PetDaoMemory();
   List<Cliente> donos = ClienteDaoMemory().listarTodos();
@@ -24,14 +34,27 @@ class RegistroPet extends StatelessWidget {
   void salvarDados() {
     final Pet registro = Pet(id: 0, nome: '', idDono: 0, animal: '', raca: '', rga: '');
 
-    // registro.nome = textNome.textValue;
-    // registro.idDono = textDono.textValue;
-    // registro.animal = textAnimal.textValue;
-    // registro.raca = textRaca.textValue;
-    // registro.rga = textRGA.textValue;
+    registro.nome = textNome;
+    try {
+      registro.idDono = textDono.textValue;
+    } catch (e) {
+      registro.idDono = 1;
+    }
+    registro.animal = textAnimal;
+    registro.raca = textRaca;
+    registro.rga = textRGA;
 
-    print(registro.idDono);
-    petDao.inserir(registro);
+    setState(() {
+      invalidNome = registro.nome.isEmpty;
+      invalidAnimal = registro.animal.isEmpty;
+      invalidRaca = registro.raca.isEmpty;
+      invalidRGA = registro.rga.length != 9;
+    });
+
+    if(!invalidNome && !invalidAnimal && !invalidRaca && !invalidRGA) {
+      petDao.inserir(registro);
+      Navigator.of(context).pushNamed("/");
+    }
   }
 
   @override
@@ -43,17 +66,17 @@ class RegistroPet extends StatelessWidget {
       ),
       body: Column(children: [
         const SizedBox(height: 20,),
-        textNome,
+        TextForm('Nome do Pet', onChanged: (value) => textNome = value, invalid: invalidNome,),
+        const SizedBox(height: 20,),
+        TextForm('Animal', onChanged: (value) => textAnimal = value, invalid: invalidAnimal,),
         const SizedBox(height: 20,),
         textDono,
         const SizedBox(height: 20,),
-        textAnimal,
+        TextForm('Raça', onChanged: (value) => textRaca = value, invalid: invalidRaca,),
         const SizedBox(height: 20,),
-        textRaca,
+        TextForm('RGA', rga: true, onChanged: (value) => textRGA = value, invalid: invalidRGA,),
         const SizedBox(height: 20,),
-        textRGA,
-        const SizedBox(height: 20,),
-        ButtonForm('Salvar', function: salvarDados, route: '/',),
+        ButtonForm('Salvar', function: salvarDados),
       ]),
     );
   }

@@ -32,7 +32,7 @@ class _RegistroClienteState extends State<RegistroCliente> {
 
   ClienteDao clienteDao = ClienteDaoMemory();
 
-  void salvarDados(BuildContext context) {
+  void salvarDados() {
     final Cliente registro = Cliente(id: 0, nome: '', email: '', rua: '', bairro: '', numeroCasa: '', numeroTelefone: '', cpf: '');
 
     registro.nome = textNome;
@@ -82,7 +82,7 @@ class _RegistroClienteState extends State<RegistroCliente> {
         const SizedBox(height: 20,),
         TextForm('CPF do Cliente', cpf: true, onChanged: (value) => textCPF = value, invalid: invalidCPF,),
         const SizedBox(height: 20,),
-        ButtonForm('Salvar', function: () => salvarDados(context)),
+        ButtonForm('Salvar', function: salvarDados),
       ]),
     );
   }

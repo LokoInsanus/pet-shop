@@ -16,8 +16,6 @@ class DropdownButtonForm extends StatefulWidget {
 class _DropdownButtonFormState extends State<DropdownButtonForm> {
   late List<String> nomeDonos = widget.donos.map((cliente) => cliente.nome).toList();
 
-  late List<int> idDonos = widget.donos.map((cliente) => cliente.id).toList();
-
   @override
   Widget build(BuildContext context){
     return Center(
