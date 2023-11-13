@@ -7,7 +7,7 @@ import 'package:pet_shop/views/components/buttonForm.dart';
 
 // ignore: must_be_immutable
 class RegistroCliente extends StatefulWidget {
-  RegistroCliente({Key? key}) : super(key: key);
+  const RegistroCliente({Key? key}) : super(key: key);
 
   @override
   State<RegistroCliente> createState() => _RegistroClienteState();
@@ -55,7 +55,7 @@ class _RegistroClienteState extends State<RegistroCliente> {
 
     if(!invalidNome && !invalidEmail && !invalidRua && !invalidBairro && !invalidNumero && !invalidTelefone && !invalidCPF) {
       clienteDao.inserir(registro);
-      Navigator.of(context).pushNamed("/");
+      Navigator.of(context).pop();
     }
   }
 

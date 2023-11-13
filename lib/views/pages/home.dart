@@ -10,6 +10,7 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Pet Shop - Home'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: const Column(children: [
         SizedBox(height: 20,),

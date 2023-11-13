@@ -10,7 +10,7 @@ import 'package:pet_shop/views/components/textForm.dart';
 
 // ignore: must_be_immutable
 class RegistroPet extends StatefulWidget {
-  RegistroPet({ Key? key }) : super(key: key);
+  const RegistroPet({ Key? key }) : super(key: key);
 
   @override
   State<RegistroPet> createState() => _RegistroPetState();
@@ -53,7 +53,7 @@ class _RegistroPetState extends State<RegistroPet> {
 
     if(!invalidNome && !invalidAnimal && !invalidRaca && !invalidRGA) {
       petDao.inserir(registro);
-      Navigator.of(context).pushNamed("/");
+      Navigator.of(context).pop();
     }
   }
 

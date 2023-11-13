@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_shop/views/pages/home.dart';
 import 'package:pet_shop/views/pages/listarClientes.dart';
 import 'package:pet_shop/views/pages/listarPets.dart';
+import 'package:pet_shop/views/pages/login.dart';
 import 'package:pet_shop/views/pages/registroCliente.dart';
 import 'package:pet_shop/views/pages/registroPet.dart';
 
@@ -24,10 +25,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pet Shop',
+      initialRoute: '/login',
       routes: {
         '/': (context) => const Home(),
-        '/registroCliente': (context) => RegistroCliente(),
-        '/registroPet': (context) => RegistroPet(),
+        '/login': (context) => const Login(),
+        '/registroCliente': (context) => const RegistroCliente(),
+        '/registroPet': (context) => const RegistroPet(),
         '/listarClientes': (context) => const ListarClientes(),
         '/listarPets': (context) => const ListarPets(),
       },
