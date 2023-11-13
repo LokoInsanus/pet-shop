@@ -1,4 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:pet_shop/dao/clienteDao.dart';
+import 'package:pet_shop/dao/memory/clienteDaoMemory.dart';
 import 'package:pet_shop/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_shop/views/pages/home.dart';
@@ -14,6 +16,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  ClienteDao clienteDao = ClienteDaoMemory();
+  clienteDao.getDatabase();
 
   runApp(const MyApp());
 }

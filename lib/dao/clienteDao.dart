@@ -6,4 +6,6 @@ abstract class ClienteDao {
   bool inserir(Cliente cliente);
   bool alterar(Cliente cliente);
   bool excluir(Cliente cliente);
+  void getDatabase();
+  void postDatabase(List<Cliente> dados);
 }

@@ -44,6 +44,7 @@ class ClienteDaoMemory implements ClienteDao {
   bool inserir(Cliente cliente) {
     dados.add(cliente);
     cliente.id = dados.length;
+    postDatabase(dados);
     return true;
   }
 
@@ -57,5 +58,16 @@ class ClienteDaoMemory implements ClienteDao {
     for (int i = 0; i < dados.length; i++)
       if (dados[i].id == id) return dados[i];
     return null;
+  }
+
+  
+  @override
+  void getDatabase() {
+    
+  }
+
+  @override
+  void postDatabase(List<Cliente> dados) {
+    
   }
 }

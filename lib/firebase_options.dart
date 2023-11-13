@@ -58,6 +58,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '133718020487',
     projectId: 'pet-shop-174e4',
     authDomain: 'pet-shop-174e4.firebaseapp.com',
+    databaseURL: 'https://pet-shop-174e4-default-rtdb.firebaseio.com',
     storageBucket: 'pet-shop-174e4.appspot.com',
     measurementId: 'G-JG03Z00KMD',
   );
