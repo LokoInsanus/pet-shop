@@ -56,6 +56,7 @@ class _RegistroClienteState extends State<RegistroCliente> {
     if(!invalidNome && !invalidEmail && !invalidRua && !invalidBairro && !invalidNumero && !invalidTelefone && !invalidCPF) {
       clienteDao.inserir(registro);
       Navigator.of(context).pop();
+      clienteDao.postCliente();
     }
   }
 

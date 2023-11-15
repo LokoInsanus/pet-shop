@@ -54,6 +54,7 @@ class _RegistroPetState extends State<RegistroPet> {
     if(!invalidNome && !invalidAnimal && !invalidRaca && !invalidRGA) {
       petDao.inserir(registro);
       Navigator.of(context).pop();
+      petDao.postPet();
     }
   }
 

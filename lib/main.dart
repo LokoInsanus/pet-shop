@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:pet_shop/dao/clienteDao.dart';
 import 'package:pet_shop/dao/memory/clienteDaoMemory.dart';
+import 'package:pet_shop/dao/memory/petDaoMemory.dart';
+import 'package:pet_shop/dao/petDao.dart';
 import 'package:pet_shop/firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_shop/views/pages/home.dart';
@@ -18,7 +20,10 @@ void main() async {
   );
 
   ClienteDao clienteDao = ClienteDaoMemory();
-  clienteDao.getDatabase();
+  clienteDao.getCliente();
+
+  PetDao petDao = PetDaoMemory();
+  petDao.getPet();
 
   runApp(const MyApp());
 }

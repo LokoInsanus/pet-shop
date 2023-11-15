@@ -6,4 +6,6 @@ abstract class PetDao {
   bool inserir(Pet pet);
   bool alterar(Pet pet);
   bool excluir(Pet pet);
+  void getPet();
+  void postPet();
 }

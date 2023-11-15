@@ -1,11 +1,17 @@
+import 'dart:async';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/material.dart';
 import 'package:pet_shop/dao/clienteDao.dart';
 import 'package:pet_shop/models/cliente.dart';
 
 class ClienteDaoMemory implements ClienteDao {
-  static ClienteDaoMemory _instance = ClienteDaoMemory._();
+  static final ClienteDaoMemory _instance = ClienteDaoMemory._();
   ClienteDaoMemory._();
   static ClienteDaoMemory get instance => _instance;
   factory ClienteDaoMemory() => _instance;
+
+  late final DatabaseReference clientesReference = FirebaseDatabase.instance.ref().child('clientes');
+  late StreamSubscription<DatabaseEvent> clientesSubscription;
 
   List<Cliente> dados = [
     Cliente(
@@ -44,7 +50,6 @@ class ClienteDaoMemory implements ClienteDao {
   bool inserir(Cliente cliente) {
     dados.add(cliente);
     cliente.id = dados.length;
-    postDatabase(dados);
     return true;
   }
 
@@ -55,19 +60,53 @@ class ClienteDaoMemory implements ClienteDao {
 
   @override
   Cliente? selecionarPorId(int id) {
-    for (int i = 0; i < dados.length; i++)
+    for (int i = 0; i < dados.length; i++) {
       if (dados[i].id == id) return dados[i];
+    }
     return null;
   }
 
   
   @override
-  void getDatabase() {
-    
+  void getCliente() async {
+    try {
+      final clienteSnapshot = await clientesReference.get();
+      Map cliente;
+      dados = [];
+      for (var i = 1; i < (clienteSnapshot.value as List<dynamic>).length; i++) {
+        cliente = (clienteSnapshot.value as List<dynamic>)[i];
+        dados.add(
+          Cliente(
+            id: i,
+            nome: cliente['nome'],
+            email: cliente['email'],
+            rua: cliente['rua'],
+            bairro: cliente['bairro'],
+            numeroCasa: cliente['numeroCasa'],
+            numeroTelefone: cliente['numeroTelefone'],
+            cpf: cliente['cpf']
+          )
+        );
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 
   @override
-  void postDatabase(List<Cliente> dados) {
-    
+  void postCliente() async {
+    Map<String, dynamic> mapDados = {};
+    for (var cliente in dados) {
+      mapDados[cliente.id.toString()] = {
+        'nome': cliente.nome,
+        'email': cliente.email,
+        'rua': cliente.rua,
+        'bairro': cliente.bairro,
+        'numeroCasa': cliente.numeroCasa,
+        'numeroTelefone': cliente.numeroTelefone,
+        'cpf': cliente.cpf,
+      };
+    }
+    await clientesReference.update(mapDados);
   }
 }

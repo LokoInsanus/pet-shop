@@ -21,7 +21,7 @@ class _LoginState extends State<Login> {
       invalidUsuario = textUsuario.isEmpty;
       invalidSenha = textSenha.isEmpty;
     });
-    if(textUsuario == 'Otario'.toLowerCase() && textSenha == '1234\$#@!') {
+    if(textUsuario.toLowerCase() == 'otario' && textSenha == '1234\$#@!') {
       Navigator.of(context).pushNamed('/');
     }
   }
