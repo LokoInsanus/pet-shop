@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop/views/components/createPetRows.dart';
+import 'package:pet_shop/src/views/components/createPetRows.dart';
 
 class ListarPets extends StatelessWidget {
 const ListarPets({ Key? key }) : super(key: key);

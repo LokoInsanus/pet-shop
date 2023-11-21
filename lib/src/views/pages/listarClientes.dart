@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop/views/components/createClienteRows.dart';
+import 'package:pet_shop/src/views/components/createClienteRows.dart';
 
 class ListarClientes extends StatelessWidget {
 const ListarClientes({ Key? key }) : super(key: key);

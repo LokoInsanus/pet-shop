@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop/views/components/buttonForm.dart';
+import 'package:pet_shop/src/views/components/buttonForm.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

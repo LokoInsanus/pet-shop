@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:pet_shop/dao/clienteDao.dart';
-import 'package:pet_shop/models/cliente.dart';
+import 'package:pet_shop/src/dao/clienteDao.dart';
+import 'package:pet_shop/src/models/cliente.dart';
 
 class ClienteDaoMemory implements ClienteDao {
   static final ClienteDaoMemory _instance = ClienteDaoMemory._();
@@ -55,7 +55,6 @@ class ClienteDaoMemory implements ClienteDao {
 
   @override
   List<Cliente> listarTodos() {
-    getCliente();
     return dados;
   }
 

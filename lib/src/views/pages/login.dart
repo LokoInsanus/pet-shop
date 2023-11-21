@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop/views/components/buttonForm.dart';
-import 'package:pet_shop/views/components/textForm.dart';
+import 'package:pet_shop/src/views/components/buttonForm.dart';
+import 'package:pet_shop/src/views/components/textForm.dart';
 
 class Login extends StatefulWidget {
   const Login({ Key? key }) : super(key: key);

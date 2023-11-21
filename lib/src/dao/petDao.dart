@@ -1,4 +1,4 @@
-import 'package:pet_shop/models/pet.dart';
+import 'package:pet_shop/src/models/pet.dart';
 
 abstract class PetDao {
   List<Pet> listarTodos();

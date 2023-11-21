@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop/dao/memory/clienteDaoMemory.dart';
-import 'package:pet_shop/dao/memory/petDaoMemory.dart';
-import 'package:pet_shop/dao/petDao.dart';
-import 'package:pet_shop/models/cliente.dart';
-import 'package:pet_shop/models/pet.dart';
-import 'package:pet_shop/views/components/buttonForm.dart';
-import 'package:pet_shop/views/components/dropdownButtonForm.dart';
-import 'package:pet_shop/views/components/textForm.dart';
+import 'package:pet_shop/src/dao/memory/clienteDaoMemory.dart';
+import 'package:pet_shop/src/dao/memory/petDaoMemory.dart';
+import 'package:pet_shop/src/dao/petDao.dart';
+import 'package:pet_shop/src/models/cliente.dart';
+import 'package:pet_shop/src/models/pet.dart';
+import 'package:pet_shop/src/views/components/buttonForm.dart';
+import 'package:pet_shop/src/views/components/dropdownButtonForm.dart';
+import 'package:pet_shop/src/views/components/textForm.dart';
 
 // ignore: must_be_immutable
 class RegistroPet extends StatefulWidget {

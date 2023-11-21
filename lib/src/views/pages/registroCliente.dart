@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop/dao/clienteDao.dart';
-import 'package:pet_shop/dao/memory/clienteDaoMemory.dart';
-import 'package:pet_shop/models/cliente.dart';
-import 'package:pet_shop/views/components/textForm.dart';
-import 'package:pet_shop/views/components/buttonForm.dart';
+import 'package:pet_shop/src/dao/clienteDao.dart';
+import 'package:pet_shop/src/dao/memory/clienteDaoMemory.dart';
+import 'package:pet_shop/src/models/cliente.dart';
+import 'package:pet_shop/src/views/components/textForm.dart';
+import 'package:pet_shop/src/views/components/buttonForm.dart';
 
 // ignore: must_be_immutable
 class RegistroCliente extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:pet_shop/models/cliente.dart';
+import 'package:pet_shop/src/models/cliente.dart';
 
 abstract class ClienteDao {
   List<Cliente> listarTodos();

@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:pet_shop/dao/petDao.dart';
-import 'package:pet_shop/models/pet.dart';
+import 'package:pet_shop/src/dao/petDao.dart';
+import 'package:pet_shop/src/models/pet.dart';
 
 class PetDaoMemory implements PetDao {
   static final PetDaoMemory _instance = PetDaoMemory._();
@@ -62,7 +62,6 @@ class PetDaoMemory implements PetDao {
 
   @override
   List<Pet> listarTodos() {
-    getPet();
     return dados;
   }
 

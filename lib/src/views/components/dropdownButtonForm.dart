@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop/models/cliente.dart';
-import 'package:pet_shop/dao/memory/clienteDaoMemory.dart';
+import 'package:pet_shop/src/models/cliente.dart';
+import 'package:pet_shop/src/dao/memory/clienteDaoMemory.dart';
 
 // ignore: must_be_immutable
 class DropdownButtonForm extends StatefulWidget {

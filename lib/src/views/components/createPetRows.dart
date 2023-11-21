@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pet_shop/dao/memory/clienteDaoMemory.dart';
-import 'package:pet_shop/dao/memory/petDaoMemory.dart';
-import 'package:pet_shop/models/cliente.dart';
-import 'package:pet_shop/models/pet.dart';
+import 'package:pet_shop/src/dao/memory/clienteDaoMemory.dart';
+import 'package:pet_shop/src/dao/memory/petDaoMemory.dart';
+import 'package:pet_shop/src/models/cliente.dart';
+import 'package:pet_shop/src/models/pet.dart';
 
 List<DataRow> CreatePetRows() {
   List<DataRow> rows = [];
