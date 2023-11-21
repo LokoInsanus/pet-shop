@@ -55,6 +55,7 @@ class ClienteDaoMemory implements ClienteDao {
 
   @override
   List<Cliente> listarTodos() {
+    getCliente();
     return dados;
   }
 
@@ -65,7 +66,6 @@ class ClienteDaoMemory implements ClienteDao {
     }
     return null;
   }
-
   
   @override
   void getCliente() async {

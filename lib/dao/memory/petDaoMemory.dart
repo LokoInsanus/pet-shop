@@ -62,6 +62,7 @@ class PetDaoMemory implements PetDao {
 
   @override
   List<Pet> listarTodos() {
+    getPet();
     return dados;
   }
 

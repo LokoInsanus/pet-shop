@@ -10,7 +10,7 @@ List<DataRow> CreatePetRows() {
   Cliente dono;
 
   for (var dado in dados) {
-    dono = ClienteDaoMemory().selecionarPorId(dado.idDono)!;
+    dono = ClienteDaoMemory().selecionarPorId(dado.idDono) as Cliente;
     rows.add(DataRow(cells: [
       DataCell(Text(dado.id.toString())),
       DataCell(Text(dado.nome)),
