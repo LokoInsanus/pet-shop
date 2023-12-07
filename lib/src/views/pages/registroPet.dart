@@ -5,7 +5,7 @@ import 'package:pet_shop/src/dao/petDao.dart';
 import 'package:pet_shop/src/models/cliente.dart';
 import 'package:pet_shop/src/models/pet.dart';
 import 'package:pet_shop/src/views/components/backgroundImage.dart';
-import 'package:pet_shop/src/views/components/buttonForm.dart';
+import 'package:pet_shop/src/views/components/loginButton.dart';
 import 'package:pet_shop/src/views/components/dropdownButtonForm.dart';
 import 'package:pet_shop/src/views/components/textForm.dart';
 
@@ -63,20 +63,26 @@ class _RegistroPetState extends State<RegistroPet> {
   Widget build(BuildContext context){
     return Material(
       child: BackgroundImage(
-        child: Column(children: [
-          const SizedBox(height: 20,),
-          TextForm('Nome do Pet', onChanged: (value) => textNome = value, invalid: invalidNome,),
-          const SizedBox(height: 20,),
-          TextForm('Animal', onChanged: (value) => textAnimal = value, invalid: invalidAnimal,),
-          const SizedBox(height: 20,),
-          textDono,
-          const SizedBox(height: 20,),
-          TextForm('Raça', onChanged: (value) => textRaca = value, invalid: invalidRaca,),
-          const SizedBox(height: 20,),
-          TextForm('RGA', rga: true, onChanged: (value) => textRGA = value, invalid: invalidRGA,),
-          const SizedBox(height: 20,),
-          ButtonForm('Salvar', function: salvarDados),
-        ]),
+        child: Container(
+          margin: const EdgeInsets.only(left: 400, right: 400),
+          decoration: const BoxDecoration(
+            color: Color(0xCCCFF4FF),
+          ),
+          child: Column(children: [
+            const SizedBox(height: 120,),
+            TextForm('Nome do Pet', onChanged: (value) => textNome = value, invalid: invalidNome,),
+            const SizedBox(height: 40,),
+            TextForm('Animal', onChanged: (value) => textAnimal = value, invalid: invalidAnimal,),
+            const SizedBox(height: 40,),
+            textDono,
+            const SizedBox(height: 40,),
+            TextForm('Raça', onChanged: (value) => textRaca = value, invalid: invalidRaca,),
+            const SizedBox(height: 40,),
+            TextForm('RGA', rga: true, onChanged: (value) => textRGA = value, invalid: invalidRGA,),
+            const SizedBox(height: 40,),
+            LoginButton('Salvar', function: salvarDados),
+          ]),
+        ),
       ),
     );
   }

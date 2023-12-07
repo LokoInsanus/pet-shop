@@ -13,16 +13,23 @@ const ListarPets({ Key? key }) : super(key: key);
           children: [
             Align(
               alignment: Alignment.topCenter,
-              child: DataTable(
-                columns: const [
-                  DataColumn(label: Text('ID')),
-                  DataColumn(label: Text('Nome')),
-                  DataColumn(label: Text('Dono')),
-                  DataColumn(label: Text('Animal')),
-                  DataColumn(label: Text('Raça')),
-                  DataColumn(label: Text('RGA')),
-                ],
-                rows: CreatePetRows(),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Color(0xB2000088)
+                ),
+                child: DataTable(
+                  columns: const [
+                    DataColumn(label: Text('ID')),
+                    DataColumn(label: Text('Nome')),
+                    DataColumn(label: Text('Dono')),
+                    DataColumn(label: Text('Animal')),
+                    DataColumn(label: Text('Raça')),
+                    DataColumn(label: Text('RGA')),
+                  ],
+                  rows: CreatePetRows(),
+                  dataRowColor: MaterialStateProperty.all(const Color(0xCCCFF4FF)),
+                  dataTextStyle: const TextStyle(color: Colors.black),
+                ),
               ),
             ),
           ]

@@ -4,7 +4,7 @@ import 'package:pet_shop/src/dao/memory/clienteDaoMemory.dart';
 import 'package:pet_shop/src/models/cliente.dart';
 import 'package:pet_shop/src/views/components/backgroundImage.dart';
 import 'package:pet_shop/src/views/components/textForm.dart';
-import 'package:pet_shop/src/views/components/buttonForm.dart';
+import 'package:pet_shop/src/views/components/loginButton.dart';
 
 // ignore: must_be_immutable
 class RegistroCliente extends StatefulWidget {
@@ -65,24 +65,30 @@ class _RegistroClienteState extends State<RegistroCliente> {
   Widget build(BuildContext context) {
     return Material(
       child: BackgroundImage(
-        child: Column(children: [
-          const SizedBox(height: 20,),
-          TextForm('Nome do Cliente', onChanged: (value) => textNome = value, invalid: invalidNome,),
-          const SizedBox(height: 20,),
-          TextForm('Email do Cliente', onChanged: (value) => textEmail = value, invalid: invalidEmail,),
-          const SizedBox(height: 20,),
-          TextForm('Rua do Cliente', onChanged: (value) => textRua = value, invalid: invalidRua,),
-          const SizedBox(height: 20,),
-          TextForm('Bairro do Cliente', onChanged: (value) => textBairro = value, invalid: invalidBairro,),
-          const SizedBox(height: 20,),
-          TextForm('Número da Casa', onChanged: (value) => textNumero = value, invalid: invalidNumero,),
-          const SizedBox(height: 20,),
-          TextForm('Número de Telefone', telefone: true, onChanged: (value) => textTelefone = value, invalid: invalidTelefone,),
-          const SizedBox(height: 20,),
-          TextForm('CPF do Cliente', cpf: true, onChanged: (value) => textCPF = value, invalid: invalidCPF,),
-          const SizedBox(height: 20,),
-          ButtonForm('Salvar', function: salvarDados),
-        ]),
+        child: Container(
+          margin: const EdgeInsets.only(left: 400, right: 400),
+          decoration: const BoxDecoration(
+            color: Color(0xCCCFF4FF),
+          ),
+          child: Column(children: [
+            const SizedBox(height: 120,),
+            TextForm('Nome do Cliente', onChanged: (value) => textNome = value, invalid: invalidNome,),
+            const SizedBox(height: 40,),
+            TextForm('Email do Cliente', onChanged: (value) => textEmail = value, invalid: invalidEmail,),
+            const SizedBox(height: 40,),
+            TextForm('Rua do Cliente', onChanged: (value) => textRua = value, invalid: invalidRua,),
+            const SizedBox(height: 40,),
+            TextForm('Bairro do Cliente', onChanged: (value) => textBairro = value, invalid: invalidBairro,),
+            const SizedBox(height: 40,),
+            TextForm('Número da Casa', onChanged: (value) => textNumero = value, invalid: invalidNumero,),
+            const SizedBox(height: 40,),
+            TextForm('Número de Telefone', telefone: true, onChanged: (value) => textTelefone = value, invalid: invalidTelefone,),
+            const SizedBox(height: 40,),
+            TextForm('CPF do Cliente', cpf: true, onChanged: (value) => textCPF = value, invalid: invalidCPF,),
+            const SizedBox(height: 40,),
+            LoginButton('Salvar', function: salvarDados),
+          ]),
+        ),
       ),
     );
   }
