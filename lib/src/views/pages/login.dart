@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_shop/src/views/components/backgroundImage.dart';
 import 'package:pet_shop/src/views/components/buttonForm.dart';
 import 'package:pet_shop/src/views/components/textForm.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -49,20 +50,23 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pet Shop - Login'),
-        centerTitle: true,
-        automaticallyImplyLeading: false,
+    return Material(
+      child: BackgroundImage(
+        child: Column(children: [
+          Image.asset(
+            'assets/images/petshop.svg',
+            // width: 200,
+            // height: 500,
+            // fit: BoxFit.cover,
+          ),
+          const SizedBox(height: 20,),
+          TextForm('Usuário', onChanged: (value) => textUsuario = value, invalid: invalidUsuario,),
+          const SizedBox(height: 20,),
+          TextForm('Senha', onChanged: (value) => textSenha = value, invalid: invalidSenha, password: true,),
+          const SizedBox(height: 20,),
+          ButtonForm('Entrar', function: login,),
+        ]),
       ),
-      body: Column(children: [
-        const SizedBox(height: 20,),
-        TextForm('Usuário', onChanged: (value) => textUsuario = value, invalid: invalidUsuario,),
-        const SizedBox(height: 20,),
-        TextForm('Senha', onChanged: (value) => textSenha = value, invalid: invalidSenha, password: true,),
-        const SizedBox(height: 20,),
-        ButtonForm('Login', function: login,),
-      ]),
     );
   }
 }

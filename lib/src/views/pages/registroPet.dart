@@ -4,6 +4,7 @@ import 'package:pet_shop/src/dao/memory/petDaoMemory.dart';
 import 'package:pet_shop/src/dao/petDao.dart';
 import 'package:pet_shop/src/models/cliente.dart';
 import 'package:pet_shop/src/models/pet.dart';
+import 'package:pet_shop/src/views/components/backgroundImage.dart';
 import 'package:pet_shop/src/views/components/buttonForm.dart';
 import 'package:pet_shop/src/views/components/dropdownButtonForm.dart';
 import 'package:pet_shop/src/views/components/textForm.dart';
@@ -60,25 +61,23 @@ class _RegistroPetState extends State<RegistroPet> {
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pet Shop - Cadastro de Pet'),
-        centerTitle: true,
+    return Material(
+      child: BackgroundImage(
+        child: Column(children: [
+          const SizedBox(height: 20,),
+          TextForm('Nome do Pet', onChanged: (value) => textNome = value, invalid: invalidNome,),
+          const SizedBox(height: 20,),
+          TextForm('Animal', onChanged: (value) => textAnimal = value, invalid: invalidAnimal,),
+          const SizedBox(height: 20,),
+          textDono,
+          const SizedBox(height: 20,),
+          TextForm('Raça', onChanged: (value) => textRaca = value, invalid: invalidRaca,),
+          const SizedBox(height: 20,),
+          TextForm('RGA', rga: true, onChanged: (value) => textRGA = value, invalid: invalidRGA,),
+          const SizedBox(height: 20,),
+          ButtonForm('Salvar', function: salvarDados),
+        ]),
       ),
-      body: Column(children: [
-        const SizedBox(height: 20,),
-        TextForm('Nome do Pet', onChanged: (value) => textNome = value, invalid: invalidNome,),
-        const SizedBox(height: 20,),
-        TextForm('Animal', onChanged: (value) => textAnimal = value, invalid: invalidAnimal,),
-        const SizedBox(height: 20,),
-        textDono,
-        const SizedBox(height: 20,),
-        TextForm('Raça', onChanged: (value) => textRaca = value, invalid: invalidRaca,),
-        const SizedBox(height: 20,),
-        TextForm('RGA', rga: true, onChanged: (value) => textRGA = value, invalid: invalidRGA,),
-        const SizedBox(height: 20,),
-        ButtonForm('Salvar', function: salvarDados),
-      ]),
     );
   }
 }
