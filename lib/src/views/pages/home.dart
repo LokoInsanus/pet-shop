@@ -7,21 +7,23 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double contextWidth = MediaQuery.of(context).size.width;
+    double contextHeight = MediaQuery.of(context).size.height;
     return Material(
       child: BackgroundImage(
         child: Container(
-          margin: const EdgeInsets.only(left: 400, right: 400),
+          margin: EdgeInsets.only(left: contextWidth < 800 ? 0 : 0.2 * contextWidth, right:  contextWidth < 800 ? 0 : 0.2 * contextWidth),
           decoration: const BoxDecoration(
             color: Color(0xCCCFF4FF)
           ),
           child: Container(
-            margin: const EdgeInsets.only(top: 100, bottom: 100, left: 200, right: 200),
+            margin: EdgeInsets.only(top: 0.1 * contextHeight, bottom: 0.1 * contextHeight, left: 0.1 * contextWidth, right: 0.1 * contextWidth),
             decoration: BoxDecoration(
               color: const Color(0xB2000088),
               borderRadius: BorderRadius.circular(80)
             ),
-            child: const Column(children: [
-              SizedBox(height: 150,),
+            child: Column(children: [
+              SizedBox(height: 0.15 * contextHeight),
               DefaultButton('Cadastrar Cliente', route: '/registroCliente',),
               SizedBox(height: 50,),
               DefaultButton('Cadastrar Pet', route: '/registroPet',),

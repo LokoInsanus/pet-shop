@@ -9,10 +9,12 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double contextWidth = MediaQuery.of(context).size.width;
+    double contextHeight = MediaQuery.of(context).size.height;
     return Center(
       child: SizedBox(
-        height: 80,
-        width: 350,
+        height: 0.06 * contextHeight,
+        width: 0.20 * contextWidth,
         child: OutlinedButton(
           onPressed: () {
             if(route != null) {

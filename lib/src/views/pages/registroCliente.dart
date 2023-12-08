@@ -4,7 +4,7 @@ import 'package:pet_shop/src/dao/memory/clienteDaoMemory.dart';
 import 'package:pet_shop/src/models/cliente.dart';
 import 'package:pet_shop/src/views/components/backgroundImage.dart';
 import 'package:pet_shop/src/views/components/textForm.dart';
-import 'package:pet_shop/src/views/components/loginButton.dart';
+import 'package:pet_shop/src/views/components/defaultButton.dart';
 
 // ignore: must_be_immutable
 class RegistroCliente extends StatefulWidget {
@@ -63,15 +63,17 @@ class _RegistroClienteState extends State<RegistroCliente> {
 
   @override
   Widget build(BuildContext context) {
+    double contextWidth = MediaQuery.of(context).size.width;
+    double contextHeight = MediaQuery.of(context).size.height;
     return Material(
       child: BackgroundImage(
         child: Container(
-          margin: const EdgeInsets.only(left: 400, right: 400),
+          margin: EdgeInsets.only(left: contextWidth < 800 ? 0 : 0.2 * contextWidth, right:  contextWidth < 800 ? 0 : 0.2 * contextWidth),
           decoration: const BoxDecoration(
             color: Color(0xCCCFF4FF),
           ),
           child: Column(children: [
-            const SizedBox(height: 120,),
+            SizedBox(height: 0.15 * contextHeight,),
             TextForm('Nome do Cliente', onChanged: (value) => textNome = value, invalid: invalidNome,),
             const SizedBox(height: 40,),
             TextForm('Email do Cliente', onChanged: (value) => textEmail = value, invalid: invalidEmail,),
@@ -86,7 +88,7 @@ class _RegistroClienteState extends State<RegistroCliente> {
             const SizedBox(height: 40,),
             TextForm('CPF do Cliente', cpf: true, onChanged: (value) => textCPF = value, invalid: invalidCPF,),
             const SizedBox(height: 40,),
-            LoginButton('Salvar', function: salvarDados),
+            DefaultButton('SALVAR', function: salvarDados),
           ]),
         ),
       ),

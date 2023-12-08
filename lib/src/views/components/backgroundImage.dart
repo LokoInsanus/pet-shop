@@ -14,7 +14,7 @@ const BackgroundImage({ Key? key, required this.child }) : super(key: key);
             image: DecorationImage(
               image: AssetImage('assets/images/background.png'),
               scale: 0.7,
-              repeat: ImageRepeat.repeat
+              repeat: ImageRepeat.repeat,
             )
           )
         ),

@@ -5,7 +5,7 @@ import 'package:pet_shop/src/dao/petDao.dart';
 import 'package:pet_shop/src/models/cliente.dart';
 import 'package:pet_shop/src/models/pet.dart';
 import 'package:pet_shop/src/views/components/backgroundImage.dart';
-import 'package:pet_shop/src/views/components/loginButton.dart';
+import 'package:pet_shop/src/views/components/defaultButton.dart';
 import 'package:pet_shop/src/views/components/dropdownButtonForm.dart';
 import 'package:pet_shop/src/views/components/textForm.dart';
 
@@ -61,15 +61,17 @@ class _RegistroPetState extends State<RegistroPet> {
 
   @override
   Widget build(BuildContext context){
+    double contextWidth = MediaQuery.of(context).size.width;
+    double contextHeight = MediaQuery.of(context).size.height;
     return Material(
       child: BackgroundImage(
         child: Container(
-          margin: const EdgeInsets.only(left: 400, right: 400),
+          margin: EdgeInsets.only(left: contextWidth < 800 ? 0 : 0.2 * contextWidth, right:  contextWidth < 800 ? 0 : 0.2 * contextWidth),
           decoration: const BoxDecoration(
             color: Color(0xCCCFF4FF),
           ),
           child: Column(children: [
-            const SizedBox(height: 120,),
+            SizedBox(height: 0.15 * contextHeight),
             TextForm('Nome do Pet', onChanged: (value) => textNome = value, invalid: invalidNome,),
             const SizedBox(height: 40,),
             TextForm('Animal', onChanged: (value) => textAnimal = value, invalid: invalidAnimal,),
@@ -80,7 +82,7 @@ class _RegistroPetState extends State<RegistroPet> {
             const SizedBox(height: 40,),
             TextForm('RGA', rga: true, onChanged: (value) => textRGA = value, invalid: invalidRGA,),
             const SizedBox(height: 40,),
-            LoginButton('Salvar', function: salvarDados),
+            DefaultButton('SALVAR', function: salvarDados),
           ]),
         ),
       ),

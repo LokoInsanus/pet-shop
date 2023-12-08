@@ -42,6 +42,10 @@ class _TextFormState extends State<TextForm> {
     return Center(
       child: Container(
         width: 500,
+        decoration: BoxDecoration(
+          color: const Color(0xCC00BCFF),
+          borderRadius: BorderRadius.circular(15),
+        ),
         child: TextField(
           obscureText: widget.password,
           onChanged: widget.onChanged,
@@ -56,15 +60,10 @@ class _TextFormState extends State<TextForm> {
             border: InputBorder.none,
             contentPadding: EdgeInsets.only(left: 40, top: (widget.icon != null ? 15: 0))
           ),
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: 'Roboto',
             fontWeight: FontWeight.w700,
           ),
-        ),
-        decoration: BoxDecoration(
-          color: Color(0xCC00BCFF),
-          borderRadius: BorderRadius.circular(15),
-          
         ),
       ),
     );

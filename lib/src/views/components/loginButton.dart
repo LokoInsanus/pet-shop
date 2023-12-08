@@ -9,10 +9,12 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double contextWidth = MediaQuery.of(context).size.width;
+    double contextHeight = MediaQuery.of(context).size.height;
     return Center(
       child: SizedBox(
-        height: 60,
-        width: 180,
+        height: 0.08 * contextHeight,
+        width: 0.20 * contextWidth,
         child: OutlinedButton(
           onPressed: () {
             if(route != null) {
@@ -24,7 +26,7 @@ class LoginButton extends StatelessWidget {
           },
           style: ButtonStyle(
             //foregroundColor: MaterialStateProperty.all(),
-            backgroundColor: MaterialStateProperty.all(Color(0xCC0000AA)),
+            backgroundColor: MaterialStateProperty.all(const Color(0xCC0000AA)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30)

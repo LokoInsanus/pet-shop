@@ -20,9 +20,14 @@ class _DropdownButtonFormState extends State<DropdownButtonForm> {
   @override
   Widget build(BuildContext context){
     return Center(
-      child: SizedBox(
+      child: Container(
         height: 50,
         width: 500,
+        decoration: BoxDecoration(
+          color: const Color(0xCC00BCFF),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        padding: EdgeInsets.only(left: 40),
         child: DropdownButton(
           items: nomeDonos.asMap().entries.map((entry) {
             int index = entry.key;
@@ -32,13 +37,19 @@ class _DropdownButtonFormState extends State<DropdownButtonForm> {
               child: Text(dono),
             );
           }).toList(),
+          dropdownColor: Color(0xCC00BCFF),
           onChanged: (value) {
             setState(() {
               widget.textValue = (value as int) + 1;
               dono = ClienteDaoMemory().selecionarPorId(widget.textValue) as Cliente;
             });
           },
-          hint: Text(dono.nome == "" ? "Donos" : dono.nome),
+          underline: Container(color: Colors.transparent),
+          hint: Text(dono.nome == "" ? "Donos" : dono.nome,
+          style: const TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w700,
+          ),),
         )
       ),
     );

@@ -50,14 +50,16 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context){
+    double contextWidth = MediaQuery.of(context).size.width;
+    double contextHeight = MediaQuery.of(context).size.height;
     return Material(
       child: BackgroundImage(
         child: Container(
-          margin: const EdgeInsets.only(left: 400, right: 400),
+          margin: EdgeInsets.only(left: contextWidth < 800 ? 0 : 0.2 * contextWidth, right:  contextWidth < 800 ? 0 : 0.2 * contextWidth),
           color: const Color(0xCCCFF4FF),
           child: Column(children: [
             const SizedBox(height: 100,),
-            Image.asset('assets/images/petshop.png'),
+            Image.asset('assets/images/petshop.png', width: 0.4 * contextWidth, height: 0.4 * contextHeight),
             const SizedBox(height: 60,),
             TextForm('LOGIN', onChanged: (value) => textUsuario = value, invalid: invalidUsuario, icon: const Icon(Icons.person),),
             const SizedBox(height: 50,),
