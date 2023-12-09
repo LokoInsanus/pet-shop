@@ -4,6 +4,7 @@ import 'package:pet_shop/src/dao/memory/clienteDaoMemory.dart';
 import 'package:pet_shop/src/views/components/backgroundImage.dart';
 import 'package:pet_shop/src/views/components/createClienteRows.dart';
 
+// ignore: must_be_immutable
 class ListarClientes extends StatelessWidget {
   ListarClientes({ Key? key }) : super(key: key);
 
