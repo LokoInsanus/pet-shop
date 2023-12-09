@@ -106,6 +106,6 @@ class ClienteDaoMemory implements ClienteDao {
         'cpf': cliente.cpf,
       };
     }
-    await clientesReference.update(mapDados);
+    await clientesReference.set(mapDados);
   }
 }

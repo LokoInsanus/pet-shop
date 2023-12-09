@@ -5,6 +5,8 @@ import 'package:pet_shop/src/dao/memory/petDaoMemory.dart';
 import 'package:pet_shop/src/dao/petDao.dart';
 import 'package:pet_shop/firebase_options.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_shop/src/views/pages/editarCliente.dart';
+import 'package:pet_shop/src/views/pages/editarPet.dart';
 import 'package:pet_shop/src/views/pages/home.dart';
 import 'package:pet_shop/src/views/pages/listarClientes.dart';
 import 'package:pet_shop/src/views/pages/listarPets.dart';
@@ -35,14 +37,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pet Shop',
-      initialRoute: '/login',
+      //initialRoute: '/login',
       routes: {
         '/': (context) => const Home(),
         '/login': (context) => const Login(),
         '/registroCliente': (context) => const RegistroCliente(),
         '/registroPet': (context) => const RegistroPet(),
-        '/listarClientes': (context) => const ListarClientes(),
+        '/listarClientes': (context) => ListarClientes(),
         '/listarPets': (context) => const ListarPets(),
+        '/editarCliente': (context) => const EditarCliente(),
+        '/editarPet':(context) => const EditarPet()
       },
     );
   }

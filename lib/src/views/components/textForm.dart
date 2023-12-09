@@ -3,7 +3,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 // ignore: must_be_immutable
 class TextForm extends StatefulWidget {
-  TextForm(this.name, {Key? key, this.max, this.cpf = false, this.telefone = false, this.rga = false, this.invalid = false, this.onChanged, this.password = false, this.icon}) : super(key: key) {
+  TextForm(this.name, {Key? key, this.max, this.cpf = false, this.telefone = false, this.rga = false, this.invalid = false, this.onChanged, this.password = false, this.icon, this.placeholder}) : super(key: key) {
     if (cpf) {
       mask = MaskTextInputFormatter(mask: '000.000.000-00', filter: {"0": RegExp(r'[0-9]')},);
       max = 14;
@@ -24,6 +24,7 @@ class TextForm extends StatefulWidget {
   final bool rga;
   final bool password;
   final Icon? icon;
+  final String? placeholder;
   final ValueChanged<String>? onChanged;
 
   late bool invalid;
@@ -39,6 +40,13 @@ class _TextFormState extends State<TextForm> {
 
   @override
   Widget build(BuildContext context) {
+
+    setState(() {
+      if( widget.placeholder != null) {
+        textController.text = widget.placeholder!;
+      }
+    });
+
     return Center(
       child: Container(
         width: 500,
@@ -58,7 +66,7 @@ class _TextFormState extends State<TextForm> {
             errorText: widget.invalid == true ? 'Campo Invalido' : null,
             prefixIcon: widget.icon,
             border: InputBorder.none,
-            contentPadding: EdgeInsets.only(left: 40, top: (widget.icon != null ? 15: 0))
+            contentPadding: EdgeInsets.only(left: 40, top: (widget.icon != null ? 15: 0)),
           ),
           style: const TextStyle(
             fontFamily: 'Roboto',

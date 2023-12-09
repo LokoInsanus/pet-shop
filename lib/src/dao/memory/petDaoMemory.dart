@@ -109,6 +109,6 @@ class PetDaoMemory implements PetDao {
         'rga': pet.rga,
       };
     }
-    await petsReference.update(mapDados);
+    await petsReference.set(mapDados);
   }
 }

@@ -7,14 +7,14 @@ import 'package:pet_shop/src/views/components/textForm.dart';
 import 'package:pet_shop/src/views/components/defaultButton.dart';
 
 // ignore: must_be_immutable
-class RegistroCliente extends StatefulWidget {
-  const RegistroCliente({Key? key}) : super(key: key);
+class EditarCliente extends StatefulWidget {
+  const EditarCliente({Key? key}) : super(key: key);
 
   @override
-  State<RegistroCliente> createState() => _RegistroClienteState();
+  State<EditarCliente> createState() => _RegistroClienteState();
 }
 
-class _RegistroClienteState extends State<RegistroCliente> {
+class _RegistroClienteState extends State<EditarCliente> {
   late bool invalidNome = false;
   late bool invalidEmail = false;
   late bool invalidRua = false;
@@ -34,15 +34,16 @@ class _RegistroClienteState extends State<RegistroCliente> {
   ClienteDao clienteDao = ClienteDaoMemory();
 
   void salvarDados() {
-    final Cliente registro = Cliente(id: 0, nome: '', email: '', rua: '', bairro: '', numeroCasa: '', numeroTelefone: '', cpf: '');
+    Cliente cliente = ModalRoute.of(context)!.settings.arguments as Cliente;
+    Cliente registro = cliente;
 
-    registro.nome = textNome;
-    registro.email = textEmail;
-    registro.rua = textRua;
-    registro.bairro = textBairro;
-    registro.numeroCasa = textNumero;
-    registro.numeroTelefone = textTelefone;
-    registro.cpf = textCPF;
+    registro.nome = textNome == '' ? cliente.nome : textNome;
+    registro.email = textEmail == '' ? cliente.email : textEmail;
+    registro.rua = textRua == '' ? cliente.rua : textRua;
+    registro.bairro = textBairro == '' ? cliente.bairro : textBairro;
+    registro.numeroCasa = textNumero == '' ? cliente.numeroCasa : textNumero;
+    registro.numeroTelefone = textTelefone == '' ? cliente.numeroTelefone : textTelefone;
+    registro.cpf = textCPF == '' ? cliente.cpf : textCPF;
 
     setState(() {
       invalidNome = registro.nome.isEmpty;
@@ -55,8 +56,8 @@ class _RegistroClienteState extends State<RegistroCliente> {
     });
 
     if(!invalidNome && !invalidEmail && !invalidRua && !invalidBairro && !invalidNumero && !invalidTelefone && !invalidCPF) {
-      clienteDao.inserir(registro);
-      Navigator.of(context).pop();
+      clienteDao.alterar(registro);
+      Navigator.of(context).pushReplacementNamed('/listarClientes');
       clienteDao.postCliente();
     }
   }
@@ -65,6 +66,8 @@ class _RegistroClienteState extends State<RegistroCliente> {
   Widget build(BuildContext context) {
     double contextWidth = MediaQuery.of(context).size.width;
     double contextHeight = MediaQuery.of(context).size.height;
+    Cliente cliente = ModalRoute.of(context)!.settings.arguments as Cliente;
+    
     return Material(
       child: BackgroundImage(
         child: Container(
@@ -74,19 +77,19 @@ class _RegistroClienteState extends State<RegistroCliente> {
           ),
           child: ListView(children: [
             SizedBox(height: 0.15 * contextHeight,),
-            TextForm('Nome do Cliente', onChanged: (value) => textNome = value, invalid: invalidNome,),
+            TextForm('Nome do Cliente', onChanged: (value) => textNome = value, invalid: invalidNome, placeholder: cliente.nome,),
             const SizedBox(height: 40,),
-            TextForm('Email do Cliente', onChanged: (value) => textEmail = value, invalid: invalidEmail,),
+            TextForm('Email do Cliente', onChanged: (value) => textEmail = value, invalid: invalidEmail, placeholder: cliente.email,),
             const SizedBox(height: 40,),
-            TextForm('Rua do Cliente', onChanged: (value) => textRua = value, invalid: invalidRua,),
+            TextForm('Rua do Cliente', onChanged: (value) => textRua = value, invalid: invalidRua, placeholder: cliente.rua,),
             const SizedBox(height: 40,),
-            TextForm('Bairro do Cliente', onChanged: (value) => textBairro = value, invalid: invalidBairro,),
+            TextForm('Bairro do Cliente', onChanged: (value) => textBairro = value, invalid: invalidBairro, placeholder: cliente.bairro,),
             const SizedBox(height: 40,),
-            TextForm('Número da Casa', onChanged: (value) => textNumero = value, invalid: invalidNumero,),
+            TextForm('Número da Casa', onChanged: (value) => textNumero = value, invalid: invalidNumero, placeholder: cliente.numeroCasa,),
             const SizedBox(height: 40,),
-            TextForm('Número de Telefone', telefone: true, onChanged: (value) => textTelefone = value, invalid: invalidTelefone,),
+            TextForm('Número de Telefone', telefone: true, onChanged: (value) => textTelefone = value, invalid: invalidTelefone, placeholder: cliente.numeroTelefone,),
             const SizedBox(height: 40,),
-            TextForm('CPF do Cliente', cpf: true, onChanged: (value) => textCPF = value, invalid: invalidCPF,),
+            TextForm('CPF do Cliente', cpf: true, onChanged: (value) => textCPF = value, invalid: invalidCPF, placeholder: cliente.cpf,),
             const SizedBox(height: 40,),
             DefaultButton('SALVAR', function: salvarDados),
           ]),
