@@ -4,6 +4,7 @@ import 'package:pet_shop/src/dao/memory/petDaoMemory.dart';
 import 'package:pet_shop/src/dao/petDao.dart';
 import 'package:pet_shop/src/models/cliente.dart';
 import 'package:pet_shop/src/models/pet.dart';
+import 'package:pet_shop/src/views/components/back.dart';
 import 'package:pet_shop/src/views/components/backgroundImage.dart';
 import 'package:pet_shop/src/views/components/defaultButton.dart';
 import 'package:pet_shop/src/views/components/dropdownButtonForm.dart';
@@ -65,25 +66,33 @@ class _RegistroPetState extends State<RegistroPet> {
     double contextHeight = MediaQuery.of(context).size.height;
     return Material(
       child: BackgroundImage(
-        child: Container(
-          margin: EdgeInsets.only(left: contextWidth < 800 ? 0 : 0.2 * contextWidth, right:  contextWidth < 800 ? 0 : 0.2 * contextWidth),
-          decoration: const BoxDecoration(
-            color: Color(0xCCCFF4FF),
-          ),
-          child: ListView(children: [
-            SizedBox(height: 0.15 * contextHeight),
-            TextForm('Nome do Pet', onChanged: (value) => textNome = value, invalid: invalidNome,),
-            const SizedBox(height: 40,),
-            TextForm('Animal', onChanged: (value) => textAnimal = value, invalid: invalidAnimal,),
-            const SizedBox(height: 40,),
-            textDono,
-            const SizedBox(height: 40,),
-            TextForm('Raça', onChanged: (value) => textRaca = value, invalid: invalidRaca,),
-            const SizedBox(height: 40,),
-            TextForm('RGA', rga: true, onChanged: (value) => textRGA = value, invalid: invalidRGA,),
-            const SizedBox(height: 40,),
-            DefaultButton('SALVAR', function: salvarDados),
-          ]),
+        child: Stack(
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: contextWidth < 800 ? 0 : 0.2 * contextWidth, right:  contextWidth < 800 ? 0 : 0.2 * contextWidth),
+              decoration: const BoxDecoration(
+                color: Color(0xCCCFF4FF),
+              ),
+              child: ListView(children: [
+                SizedBox(height: 0.15 * contextHeight),
+                TextForm('Nome do Pet', onChanged: (value) => textNome = value, invalid: invalidNome,),
+                const SizedBox(height: 40,),
+                TextForm('Animal', onChanged: (value) => textAnimal = value, invalid: invalidAnimal,),
+                const SizedBox(height: 40,),
+                textDono,
+                const SizedBox(height: 40,),
+                TextForm('Raça', onChanged: (value) => textRaca = value, invalid: invalidRaca,),
+                const SizedBox(height: 40,),
+                TextForm('RGA', rga: true, onChanged: (value) => textRGA = value, invalid: invalidRGA,),
+                const SizedBox(height: 40,),
+                DefaultButton('SALVAR', function: salvarDados),
+              ]),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 0.025 * contextHeight, left: 0.22 * contextWidth),
+              child: const Back()
+            ),            
+          ],
         ),
       ),
     );

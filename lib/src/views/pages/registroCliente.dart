@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_shop/src/dao/clienteDao.dart';
 import 'package:pet_shop/src/dao/memory/clienteDaoMemory.dart';
 import 'package:pet_shop/src/models/cliente.dart';
+import 'package:pet_shop/src/views/components/back.dart';
 import 'package:pet_shop/src/views/components/backgroundImage.dart';
 import 'package:pet_shop/src/views/components/textForm.dart';
 import 'package:pet_shop/src/views/components/defaultButton.dart';
@@ -67,29 +68,37 @@ class _RegistroClienteState extends State<RegistroCliente> {
     double contextHeight = MediaQuery.of(context).size.height;
     return Material(
       child: BackgroundImage(
-        child: Container(
-          margin: EdgeInsets.only(left: contextWidth < 800 ? 0 : 0.2 * contextWidth, right:  contextWidth < 800 ? 0 : 0.2 * contextWidth),
-          decoration: const BoxDecoration(
-            color: Color(0xCCCFF4FF),
-          ),
-          child: ListView(children: [
-            SizedBox(height: 0.15 * contextHeight,),
-            TextForm('Nome do Cliente', onChanged: (value) => textNome = value, invalid: invalidNome,),
-            const SizedBox(height: 40,),
-            TextForm('Email do Cliente', onChanged: (value) => textEmail = value, invalid: invalidEmail,),
-            const SizedBox(height: 40,),
-            TextForm('Rua do Cliente', onChanged: (value) => textRua = value, invalid: invalidRua,),
-            const SizedBox(height: 40,),
-            TextForm('Bairro do Cliente', onChanged: (value) => textBairro = value, invalid: invalidBairro,),
-            const SizedBox(height: 40,),
-            TextForm('Número da Casa', onChanged: (value) => textNumero = value, invalid: invalidNumero,),
-            const SizedBox(height: 40,),
-            TextForm('Número de Telefone', telefone: true, onChanged: (value) => textTelefone = value, invalid: invalidTelefone,),
-            const SizedBox(height: 40,),
-            TextForm('CPF do Cliente', cpf: true, onChanged: (value) => textCPF = value, invalid: invalidCPF,),
-            const SizedBox(height: 40,),
-            DefaultButton('SALVAR', function: salvarDados),
-          ]),
+        child: Stack(
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: contextWidth < 800 ? 0 : 0.2 * contextWidth, right:  contextWidth < 800 ? 0 : 0.2 * contextWidth),
+              decoration: const BoxDecoration(
+                color: Color(0xCCCFF4FF),
+              ),
+              child: ListView(children: [
+                SizedBox(height: 0.15 * contextHeight,),
+                TextForm('Nome do Cliente', onChanged: (value) => textNome = value, invalid: invalidNome,),
+                const SizedBox(height: 40,),
+                TextForm('Email do Cliente', onChanged: (value) => textEmail = value, invalid: invalidEmail,),
+                const SizedBox(height: 40,),
+                TextForm('Rua do Cliente', onChanged: (value) => textRua = value, invalid: invalidRua,),
+                const SizedBox(height: 40,),
+                TextForm('Bairro do Cliente', onChanged: (value) => textBairro = value, invalid: invalidBairro,),
+                const SizedBox(height: 40,),
+                TextForm('Número da Casa', onChanged: (value) => textNumero = value, invalid: invalidNumero,),
+                const SizedBox(height: 40,),
+                TextForm('Número de Telefone', telefone: true, onChanged: (value) => textTelefone = value, invalid: invalidTelefone,),
+                const SizedBox(height: 40,),
+                TextForm('CPF do Cliente', cpf: true, onChanged: (value) => textCPF = value, invalid: invalidCPF,),
+                const SizedBox(height: 40,),
+                DefaultButton('SALVAR', function: salvarDados),
+              ]),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 0.025 * contextHeight, left: 0.22 * contextWidth),
+              child: const Back()
+            ),
+          ],
         ),
       ),
     );
